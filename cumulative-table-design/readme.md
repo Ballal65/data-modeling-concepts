@@ -38,6 +38,8 @@ Scalable Queries: Directly query the latest data for insights without expensive 
 Historical Analysis: Analyze trends over time with minimal computation.
 Weaknesses:
 Sequential Backfilling: Backfilling data must follow chronological order, slowing batch processing.
+
+## Example query
 Data Growth: Tables grow daily, necessitating periodic pruning of irrelevant records.
 Complexity in Deleting Data: Handling PII or inactive users requires additional logic.
 Best Practices
