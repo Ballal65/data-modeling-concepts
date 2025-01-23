@@ -1,10 +1,10 @@
-Chapter 1: Cumulative Table Design
+# Chapter 1: Cumulative Table Design
 Cumulative table design is a critical concept in data modeling, particularly for maintaining historical data and ensuring comprehensive datasets for analysis. This chapter explores the methodology, use cases, and trade-offs of cumulative table design.
 
-What is a Cumulative Table?
+## What is a Cumulative Table?
 A cumulative table retains historical data by combining daily snapshots. It merges today's data with the accumulated data from previous days, ensuring a complete history of changes for each entity. This design is often used in analytics for tracking user activity, transitions, and historical metrics.
 
-Key Characteristics:
+## Key Characteristics:
 History Preservation: Ensures no data is lost over time by maintaining a record of past states.
 Full Outer Join: Combines today's and yesterday's data, allowing for unmatched rows in either dataset.
 Coalescing Values: Resolves conflicts or nulls when data exists in only one of the tables.
@@ -13,16 +13,16 @@ Prepare Today's and Yesterday's Tables:
 
 Ensure both tables have identical schemas.
 Today's table contains new records; yesterday's table holds historical data.
-Full Outer Join:
+- Full Outer Join:
 
 Merge both tables to retain all records, whether they exist in one or both datasets.
-Coalesce Values:
+- Coalesce Values:
 
 Resolve missing or updated values, ensuring the latest information is preserved.
-Filter Irrelevant Data:
+- Filter Irrelevant Data:
 
 Remove entities that are no longer needed, such as deactivated users.
-Generate Metrics:
+- Generate Metrics:
 
 Compute historical metrics, such as days since last activity or cumulative engagement.
 Example Use Cases
