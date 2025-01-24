@@ -26,9 +26,11 @@ Today's table contains new records; yesterday's table holds historical data.
 ## Trade-offs and Challenges
 # Strengths:
 - Scalable Queries: Directly query the latest data for insights without expensive joins or groupings.
-- Historical Analysis: Analyze trends over time with minimal computation.
+- Historical Analysis: Analyze trends over time with minimal computation **avoiding shuffling**.
+- Easy “transition” analysis
 # Weaknesses:
 - Sequential Backfilling: Backfilling data must follow chronological order, slowing batch processing.
+- Handling PII data can be a mess since deleted/inactive users get carried forward
 
 ## Example query
 Data Growth: Tables grow daily, necessitating periodic pruning of irrelevant records.
