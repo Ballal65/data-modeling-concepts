@@ -40,4 +40,12 @@ Today's table contains new records; yesterday's table holds historical data.
 - Clear Schema Design: Ensure schemas are intuitive for downstream consumers.
 
 ## Example with players_season dataset
+![image](https://github.com/user-attachments/assets/3cc224b3-b312-43ae-b560-46467ba099c3)
+
+### New Columns and Their Role in Cumulative Design
+1. `season_stats:` Type: season_stats[] (an array of structured data containing season, games played, points, rebounds, and assists)
+   - Each entry represents one season's statistics, allowing easy access to a player’s complete performance history.
+   - By appending new season data or retaining existing stats during inactivity, season_stats ensures all historical data is preserved without complex joins.
+2. `scoring_class:` Type: Enum ('star', 'good', 'average', 'bad')
+   - This label is recalculated each season for active players and retained for inactive ones, enabling straightforward analysis of performance trends over time.
 
