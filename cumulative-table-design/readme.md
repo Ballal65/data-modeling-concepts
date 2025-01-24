@@ -17,6 +17,9 @@ Today's table contains new records; yesterday's table holds historical data.
 - Coalesce Values: Resolve missing or updated values, preserving the latest information.
 - Filter Irrelevant Data: Remove no longer needed entities, such as deactivated users.
 - Generate Metrics: Compute historical metrics, such as days since the last activity or cumulative engagement.
+
+![cumulative_table_design](https://github.com/user-attachments/assets/44571697-3e27-43b5-b5e1-9934e0a93373)
+
   
 ## Example Use Cases
 - User Activity Tracking: Cumulative tables can track daily, weekly, and monthly active users, enabling analysis of user retention, churn, and resurrection patterns.
