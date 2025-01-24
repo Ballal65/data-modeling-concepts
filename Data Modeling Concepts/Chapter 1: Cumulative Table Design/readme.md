@@ -1,5 +1,5 @@
 # Cumulative Table Design
-Cumulative table design is a critical concept in data modeling, particularly for maintaining historical data and ensuring comprehensive datasets for analysis. This chapter explores the methodology, use cases, and trade-offs of cumulative table design.
+Cumulative table design is a critical concept in data modelling, particularly for maintaining historical data and ensuring comprehensive datasets for analysis. This chapter explores the methodology, use cases, and trade-offs of cumulative table design.
 
 ## What is a Cumulative Table?
 A cumulative table retains historical data by combining daily snapshots. It merges today's data with the accumulated data from previous days, ensuring a complete history of changes for each entity. This design is often used in analytics for tracking user activity, transitions, and historical metrics.
@@ -57,14 +57,16 @@ Today's table contains new records; yesterday's table holds historical data.
 
 ## How `season_stats` and `current_season` Facilitate Cumulation
 1. Historical Data Preservation:
-- season_stats ensures a player’s performance metrics are aggregated across seasons into a single column, reducing the need for computationally expensive joins on historical tables.
-- This structure is particularly beneficial for time-series analysis, enabling easy access to trends, such as performance improvements or declines.
-Sequential Updates:
+  - season_stats ensures a player’s performance metrics are aggregated across seasons into a single column, reducing the need for computationally expensive joins on historical tables.
+  - This structure is particularly beneficial for time-series analysis, enabling easy access to trends, such as performance improvements or declines.
 
-2. The current_season column allows the cumulative process to identify the latest season's data (today) and merge it with the historical data (yesterday).
-- This sequential design ensures no data is lost and simplifies backfilling operations.
+2. Sequential Updates:
+  - The current_season column allows the cumulative process to identify the latest season's data (today) and merge it with the historical data (yesterday).
+  - This sequential design ensures no data is lost and simplifies backfilling operations.
 
 3. Flexible Querying:
 - Analysts can extract detailed season-by-season performance or aggregate statistics (e.g., total points scored over a career) directly from the season_stats array, making querying efficient and scalable.
+
+## Try it yourself
 
 
