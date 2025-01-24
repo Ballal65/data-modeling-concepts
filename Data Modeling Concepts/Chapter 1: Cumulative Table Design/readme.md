@@ -48,4 +48,23 @@ Today's table contains new records; yesterday's table holds historical data.
    - By appending new season data or retaining existing stats during inactivity, season_stats ensures all historical data is preserved without complex joins.
 2. `scoring_class:` Type: Enum ('star', 'good', 'average', 'bad')
    - This label is recalculated each season for active players and retained for inactive ones, enabling straightforward analysis of performance trends over time.
+3. `years_since_last_season:` Type: INTEGER
+   - For active players, this is reset to 0
+   - For inactive players, it increments annually, making it easier to identify long-term inactivity or retirement trends.
+4. `current_season:` Type: INTEGER
+   - Represents the season the data belongs to, acting as a temporal marker for cumulative updates.
+   - This value helps maintain historical integrity by linking each row to a specific season
+
+## How `season_stats` and `current_season` Facilitate Cumulation
+1. Historical Data Preservation:
+- season_stats ensures a player’s performance metrics are aggregated across seasons into a single column, reducing the need for computationally expensive joins on historical tables.
+- This structure is particularly beneficial for time-series analysis, enabling easy access to trends, such as performance improvements or declines.
+Sequential Updates:
+
+2. The current_season column allows the cumulative process to identify the latest season's data (today) and merge it with the historical data (yesterday).
+- This sequential design ensures no data is lost and simplifies backfilling operations.
+
+3. Flexible Querying:
+- Analysts can extract detailed season-by-season performance or aggregate statistics (e.g., total points scored over a career) directly from the season_stats array, making querying efficient and scalable.
+
 
