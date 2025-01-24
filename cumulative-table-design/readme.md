@@ -1,4 +1,4 @@
-# Chapter 1: Cumulative Table Design
+# Cumulative Table Design
 Cumulative table design is a critical concept in data modeling, particularly for maintaining historical data and ensuring comprehensive datasets for analysis. This chapter explores the methodology, use cases, and trade-offs of cumulative table design.
 
 ## What is a Cumulative Table?
@@ -26,19 +26,18 @@ Today's table contains new records; yesterday's table holds historical data.
 
 - State Transition Analysis: Monitor changes in user states (e.g., active, inactive, churned) by comparing today's and yesterday's data.
 
-## Trade-offs and Challenges
-# Strengths:
+## Strengths:
 - Scalable Queries: Directly query the latest data for insights without expensive joins or groupings.
 - Historical Analysis: Analyze trends over time with minimal computation **avoiding shuffling**.
 - Easy “transition” analysis
-# Weaknesses:
+## Weaknesses:
 - Sequential Backfilling: Backfilling data must follow chronological order, slowing batch processing.
-- Handling PII data can be a mess since deleted/inactive users get carried forward
+- Data Growth: Tables grow daily, necessitating periodic pruning of irrelevant records. Complexity in Deleting Data: Handling PII or inactive users requires additional logic.
 
-## Example query
-Data Growth: Tables grow daily, necessitating periodic pruning of irrelevant records.
-Complexity in Deleting Data: Handling PII or inactive users requires additional logic.
-Best Practices
-Regular Pruning: Define a clear retention policy to manage table size (e.g., drop users inactive for over 180 days).
-Optimize Queries: Use indexed or partitioned tables to handle large datasets efficiently.
-Clear Schema Design: Ensure schemas are intuitive for downstream consumers.
+## Best Practices
+- Regular Pruning: Define a clear retention policy to manage table size (e.g., drop users inactive for over 180 days).
+- Optimize Queries: Use indexed or partitioned tables to handle large datasets efficiently.
+- Clear Schema Design: Ensure schemas are intuitive for downstream consumers.
+
+## Example with players_season dataset
+
