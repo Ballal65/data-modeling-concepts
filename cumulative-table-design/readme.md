@@ -13,31 +13,22 @@ Prepare Today's and Yesterday's Tables:
 
 Ensure both tables have identical schemas.
 Today's table contains new records; yesterday's table holds historical data.
-- Full Outer Join:
+- Full Outer Join: Merge both tables to retain all records, whether in one or both datasets.
+- Coalesce Values: Resolve missing or updated values, preserving the latest information.
+- Filter Irrelevant Data: Remove no longer needed entities, such as deactivated users.
+- Generate Metrics: Compute historical metrics, such as days since the last activity or cumulative engagement.
+  
+## Example Use Cases
+- User Activity Tracking: Cumulative tables can track daily, weekly, and monthly active users, enabling analysis of user retention, churn, and resurrection patterns.
 
-Merge both tables to retain all records, whether they exist in one or both datasets.
-- Coalesce Values:
+- State Transition Analysis: Monitor changes in user states (e.g., active, inactive, churned) by comparing today's and yesterday's data.
 
-Resolve missing or updated values, ensuring the latest information is preserved.
-- Filter Irrelevant Data:
-
-Remove entities that are no longer needed, such as deactivated users.
-- Generate Metrics:
-
-Compute historical metrics, such as days since last activity or cumulative engagement.
-Example Use Cases
-User Activity Tracking
-Cumulative tables can track daily, weekly, and monthly active users, enabling analysis of user retention, churn, and resurrection patterns.
-
-State Transition Analysis
-Monitor changes in user states (e.g., active, inactive, churned) by comparing today's and yesterday's data.
-
-Trade-offs and Challenges
-Strengths:
-Scalable Queries: Directly query the latest data for insights without expensive joins or groupings.
-Historical Analysis: Analyze trends over time with minimal computation.
-Weaknesses:
-Sequential Backfilling: Backfilling data must follow chronological order, slowing batch processing.
+## Trade-offs and Challenges
+# Strengths:
+- Scalable Queries: Directly query the latest data for insights without expensive joins or groupings.
+- Historical Analysis: Analyze trends over time with minimal computation.
+# Weaknesses:
+- Sequential Backfilling: Backfilling data must follow chronological order, slowing batch processing.
 
 ## Example query
 Data Growth: Tables grow daily, necessitating periodic pruning of irrelevant records.
